@@ -45,7 +45,7 @@ c(17) = 0; %upper fe
 
 %std constraint
 z = get_z(x);
-c_std = .5 + 2*std(z) - mean(z); 
+c_std = .5 + 1.5*std(z) - mean(z); 
 c(2*nk + 1) = c_std;
 
 ceq =[];

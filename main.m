@@ -9,8 +9,7 @@ n = 40;
 
 x0 = zeros(1,n);
 lb = zeros(1,n);
-ub = [];
-%ub(1,1:n) = 20;
+ub(1,1:n) = 20;
 
 A = [];
 B = [];
@@ -18,13 +17,14 @@ B = [];
 %% run fmin
 
 optionsf = optimoptions('fmincon');
-optionsf.MaxFunctionEvaluations = 10000;
-
-[xoptF1,fval,exitflag,output] = fmincon(@f,x0,A,B,[],[],lb,ub,@nonlcon,optionsf);
-print(xoptF1);
+[xoptf,fvalf,exitflagf,outputf] = fmincon(@f,x0,A,B,[],[],lb,ub,@nonlcon,optionsf);
+csvwrite('x_fmin.csv',xoptf);
+print(xoptf);
 
 %% run GA
-
-% [xoptGA,fval,exitflag,output,population,scores] = ga(@f,n,A,B,[],[],lb,ub,@nonlcon);
-% print(xoptGA);
+optionsg = optimoptions('ga');
+optionsg.MaxGenerations = n*50;
+[xoptg,fvalg,exitflagg,outputg,populationg,scoresg] = ga(@f,n,A,B,[],[],lb,ub,@nonlcon,optionsg);
+csvwrite('x_GA.csv',xoptg);
+print(xoptg);
 

@@ -36,9 +36,20 @@ disp(["Cal:",nutrients(8), "Goal:", T_req(8,1)]);
 disp(["Iro:",nutrients(9), "Goal:", T_req(9,1)]);
 
 %results
-z = get_z(x);
-csvwrite('z.csv',z);
-disp(["std", std(z),"mean",mean(z), "len z", size(z)]);
-histogram(z);
+% z = get_z(x);
+% z_names= [];
+% 
+% for i = 1:n
+%     if x(i) > .01
+%         disp([T_names(i),x(i)]);
+%         z_names = [z_names, T_names(i)];
+%     end
+% end
+% 
+% T = table(transpose(z_names),transpose(z));
+% writetable(T,'T_res.csv');
+% nuets = ["Calories","Fat","Sodium","Carbohydrates","Fiber","Vitamin A", "Vitamin B","Calcium","Iron"]; 
+% T = table(transpose(nuets),transpose(nutrients),T_req);
+% writetable(T,'T_req.csv');
 end
 
